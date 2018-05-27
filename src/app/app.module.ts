@@ -4,14 +4,20 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { NgxMapboxModule } from '../../projects/ngx-mapbox/src/lib/ngx-mapbox.module';
 import { MAPBOX_ACCESS_TOKEN } from '../../projects/ngx-mapbox/src/lib/access-token';
+import { AddANewLayerBelowLabelsComponent } from './add-a-new-layer-below-labels/add-a-new-layer-below-labels.component';
+import { RouterModule } from '@angular/router';
+import { APP_ROOT } from '@angular/core/src/di/scope';
+import { APP_ROUTES } from './app.routes';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        AddANewLayerBelowLabelsComponent
     ],
     imports: [
         BrowserModule,
         NgxMapboxModule,
+        RouterModule.forRoot(APP_ROUTES),
     ],
     providers: [
         {

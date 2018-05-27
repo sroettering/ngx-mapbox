@@ -1,15 +1,18 @@
-import { AfterViewInit, Component, ContentChildren, Inject, Input, OnInit, QueryList } from '@angular/core';
+import { AfterViewInit, Component, ContentChildren, Inject, Input, OnDestroy, OnInit, QueryList } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { LngLatBoundsLike, LngLatLike, Map as MapboxMap } from 'mapbox-gl';
 import { MAPBOX_ACCESS_TOKEN } from '../access-token';
 import { LayerComponent } from '../layer/layer.component';
+import { BehaviorSubject, fromEvent, Observable } from 'rxjs';
+import Layer = mapboxgl.Layer;
+import { first, map, mergeMap } from 'rxjs/operators';
 
 @Component({
     selector: 'mbox-map',
     templateUrl: './map.component.html',
     styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit, AfterViewInit {
+export class MapComponent implements OnDestroy, OnInit, AfterViewInit {
 
     @Input()
     minZoom: number = 0;
@@ -104,10 +107,12 @@ export class MapComponent implements OnInit, AfterViewInit {
     @Input()
     collectResourceTiming: boolean = false;
 
-    _map: MapboxMap;
-
     @ContentChildren(LayerComponent)
     layers: QueryList<LayerComponent>;
+
+    private _loaded$ = new BehaviorSubject<boolean>(false);
+
+    private _map: MapboxMap;
 
     constructor(@Inject(MAPBOX_ACCESS_TOKEN) private accessToken: string) {
         if (!accessToken) {
@@ -118,13 +123,30 @@ export class MapComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.createMapboxMap();
+        fromEvent(this._map, 'load')
+            .subscribe(() => this._loaded$.next(true));
     }
 
     ngAfterViewInit() {
-        this._map.on('load', () => {
+        this._loaded$.pipe(first(value => value)).subscribe(() => {
             this.layers.forEach(layerComponent =>
                 this._map.addLayer(layerComponent.getLayer(), layerComponent.getBefore()));
         });
+    }
+
+
+    ngOnDestroy() {
+        // TODO: check if this throws errors while loading styles
+        this._map.remove();
+    }
+
+    get allLayers(): Observable<Layer[]> {
+        // TODO: introduce a decorator for this stuff
+        return this._loaded$
+            .pipe(
+                first(value => value),
+                map(() => this._map.getStyle().layers)
+            );
     }
 
     private createMapboxMap() {
