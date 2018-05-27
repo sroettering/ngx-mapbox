@@ -2,6 +2,7 @@
  * Public API Surface of ngx-mapbox
  */
 
-export * from './lib/ngx-mapbox.service';
-export * from './lib/ngx-mapbox.component';
+export * from './lib/access-token';
+export * from './lib/layer/layer.component';
+export * from './lib/map/map.component';
 export * from './lib/ngx-mapbox.module';

@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
-import { NgxMapboxComponent } from './ngx-mapbox.component';
+import { MapComponent } from './map/map.component';
+import { LayerComponent } from './layer/layer.component';
 
 @NgModule({
     imports: [],
-    declarations: [NgxMapboxComponent],
-    exports: [NgxMapboxComponent]
+    declarations: [MapComponent, LayerComponent],
+    exports: [MapComponent, LayerComponent]
 })
 export class NgxMapboxModule {
 }
