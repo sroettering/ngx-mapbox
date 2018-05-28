@@ -1,18 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { MAPBOX_ACCESS_TOKEN } from '../../projects/ngx-mapbox/src/lib/access-token';
+import { NgxMapboxModule } from '../../projects/ngx-mapbox/src/lib/ngx-mapbox.module';
+import { AddANewLayerBelowLabelsComponent } from './add-a-new-layer-below-labels/add-a-new-layer-below-labels.component';
 
 import { AppComponent } from './app.component';
-import { NgxMapboxModule } from '../../projects/ngx-mapbox/src/lib/ngx-mapbox.module';
-import { MAPBOX_ACCESS_TOKEN } from '../../projects/ngx-mapbox/src/lib/access-token';
-import { AddANewLayerBelowLabelsComponent } from './add-a-new-layer-below-labels/add-a-new-layer-below-labels.component';
-import { RouterModule } from '@angular/router';
-import { APP_ROOT } from '@angular/core/src/di/scope';
 import { APP_ROUTES } from './app.routes';
+import { DisplayBuildingsInThreeDComponent } from './display-buildings-in-three-d/display-buildings-in-three-d.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        AddANewLayerBelowLabelsComponent
+        AddANewLayerBelowLabelsComponent,
+        DisplayBuildingsInThreeDComponent
     ],
     imports: [
         BrowserModule,
