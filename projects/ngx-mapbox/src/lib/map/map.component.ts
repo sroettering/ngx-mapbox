@@ -5,6 +5,7 @@ import { MAPBOX_ACCESS_TOKEN } from '../access-token';
 import { LayerComponent } from '../layer/layer.component';
 import { BehaviorSubject, fromEvent, Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
+import { ImageComponent } from '../image/image.component';
 import Layer = mapboxgl.Layer;
 
 @Component({
@@ -110,6 +111,9 @@ export class MapComponent implements OnDestroy, OnInit, AfterViewInit {
     @ContentChildren(LayerComponent)
     layers: QueryList<LayerComponent>;
 
+    @ContentChildren(ImageComponent)
+    images: QueryList<ImageComponent>;
+
     private _loaded$ = new BehaviorSubject<boolean>(false);
 
     private _map: MapboxMap;
@@ -128,9 +132,10 @@ export class MapComponent implements OnDestroy, OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
+        // TODO: introduce a decorator for this stuff
         this._loaded$.pipe(first(value => value)).subscribe(() => {
-            this.layers.forEach(layerComponent =>
-                this._map.addLayer(layerComponent.getLayer(), layerComponent.getBefore()));
+            this.addAllLayersToMap();
+            this.addAllImagesToMap();
         });
     }
 
@@ -146,6 +151,27 @@ export class MapComponent implements OnDestroy, OnInit, AfterViewInit {
                 first(value => value),
                 map(() => this._map.getStyle().layers)
             );
+    }
+
+    private addAllLayersToMap() {
+        this.layers.forEach(layerComponent =>
+            this._map.addLayer(layerComponent.getLayer(), layerComponent.getBefore()));
+    }
+
+    private addAllImagesToMap() {
+        this.images.forEach(imageComponent => {
+            const { id, image, options } = imageComponent;
+            if (typeof image === 'string') {
+                this._map.loadImage(image, (error, loadedImg) => {
+                    if (error) {
+                        throw error;
+                    }
+                    this._map.addImage(id, loadedImg, options);
+                });
+            } else {
+                this._map.addImage(id, <any>image, options);
+            }
+        });
     }
 
     private createMapboxMap() {
