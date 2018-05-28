@@ -3,19 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { MAPBOX_ACCESS_TOKEN } from '../../projects/ngx-mapbox/src/lib/access-token';
 import { NgxMapboxModule } from '../../projects/ngx-mapbox/src/lib/ngx-mapbox.module';
-import { AddANewLayerBelowLabelsComponent } from './add-a-new-layer-below-labels/add-a-new-layer-below-labels.component';
 
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
-import { DisplayBuildingsInThreeDComponent } from './display-buildings-in-three-d/display-buildings-in-three-d.component';
 import { TableOfContentsComponent } from './table-of-contents/table-of-contents.component';
+import { AddAGeneratedIconToTheMapComponent } from './styles/add-a-generated-icon-to-the-map/add-a-generated-icon-to-the-map.component';
+import { AddANewLayerBelowLabelsComponent } from './layers/add-a-new-layer-below-labels/add-a-new-layer-below-labels.component';
+import { DisplayBuildingsInThreeDComponent } from './layers/display-buildings-in-three-d/display-buildings-in-three-d.component';
+import { AddAnIconToTheMapComponent } from './styles/add-an-icon-to-the-map/add-an-icon-to-the-map.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         AddANewLayerBelowLabelsComponent,
         DisplayBuildingsInThreeDComponent,
-        TableOfContentsComponent
+        TableOfContentsComponent,
+        AddAGeneratedIconToTheMapComponent,
+        AddAnIconToTheMapComponent
     ],
     imports: [
         BrowserModule,

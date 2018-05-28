@@ -5,7 +5,7 @@
             <dd>
                 <ul>
                     <li *ngFor="let route of styleRoutes">
-                        <a [routerLink]="route.path">{{ route.data.title }}</a>
+                        <a [routerLink]="'styles/' + route.path">{{ route.data.title }}</a>
                     </li>
                 </ul>
             </dd>
@@ -13,7 +13,7 @@
             <dd>
                 <ul>
                     <li *ngFor="let route of layerRoutes">
-                        <a [routerLink]="route.path">{{ route.data.title }}</a>
+                        <a [routerLink]="'layers/' + route.path">{{ route.data.title }}</a>
                     </li>
                 </ul>
             </dd>

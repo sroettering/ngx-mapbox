@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MapComponent } from '../../../projects/ngx-mapbox/src/lib/map/map.component';
+import { MapComponent } from '../../../../projects/ngx-mapbox/src/lib/map/map.component';
 
 @Component({
     selector: 'app-display-buildings-in-three-d',

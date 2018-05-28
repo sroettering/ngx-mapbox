@@ -13,7 +13,7 @@ export class TableOfContentsComponent {
     layerRoutes: Routes = [];
 
     constructor(private router: Router) {
-        // this.layerRoutes = this.router.config.find(route => route.path === 'styles').children;
+        this.styleRoutes = this.router.config.find(route => route.path === 'styles').children;
         this.layerRoutes = this.router.config.find(route => route.path === 'layers').children;
     }
 
