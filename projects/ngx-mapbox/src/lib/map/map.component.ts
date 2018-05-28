@@ -4,8 +4,8 @@ import { LngLatBoundsLike, LngLatLike, Map as MapboxMap } from 'mapbox-gl';
 import { MAPBOX_ACCESS_TOKEN } from '../access-token';
 import { LayerComponent } from '../layer/layer.component';
 import { BehaviorSubject, fromEvent, Observable } from 'rxjs';
+import { first, map } from 'rxjs/operators';
 import Layer = mapboxgl.Layer;
-import { first, map, mergeMap } from 'rxjs/operators';
 
 @Component({
     selector: 'mbox-map',
@@ -133,7 +133,6 @@ export class MapComponent implements OnDestroy, OnInit, AfterViewInit {
                 this._map.addLayer(layerComponent.getLayer(), layerComponent.getBefore()));
         });
     }
-
 
     ngOnDestroy() {
         // TODO: check if this throws errors while loading styles

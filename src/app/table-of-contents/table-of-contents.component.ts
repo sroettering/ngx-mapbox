@@ -8,10 +8,13 @@ import { Router, Routes } from '@angular/router';
 })
 export class TableOfContentsComponent {
 
-    routes: Routes = [];
+    styleRoutes: Routes = [];
+
+    layerRoutes: Routes = [];
 
     constructor(private router: Router) {
-        this.routes = this.router.config.filter(route => route.path !== '');
+        // this.layerRoutes = this.router.config.find(route => route.path === 'styles').children;
+        this.layerRoutes = this.router.config.find(route => route.path === 'layers').children;
     }
 
 }

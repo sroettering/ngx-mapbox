@@ -1,9 +1,22 @@
 <div class="row">
-  <div class="column">
-    <ul>
-      <li *ngFor="let route of routes">
-        <a [routerLink]="route.path">{{ route.path }}</a>
-      </li>
-    </ul>
-  </div>
+    <div class="column">
+        <dl>
+            <dt>Styles</dt>
+            <dd>
+                <ul>
+                    <li *ngFor="let route of styleRoutes">
+                        <a [routerLink]="route.path">{{ route.data.title }}</a>
+                    </li>
+                </ul>
+            </dd>
+            <dt>Layers</dt>
+            <dd>
+                <ul>
+                    <li *ngFor="let route of layerRoutes">
+                        <a [routerLink]="route.path">{{ route.data.title }}</a>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
 </div>

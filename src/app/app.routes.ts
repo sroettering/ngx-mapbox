@@ -9,11 +9,22 @@ export const APP_ROUTES: Routes = [
         component: TableOfContentsComponent,
     },
     {
-        path: 'add-a-new-layer-below-labels',
-        component: AddANewLayerBelowLabelsComponent,
+        path: 'layers',
+        children: [
+            {
+                path: 'add-a-new-layer-below-labels',
+                component: AddANewLayerBelowLabelsComponent,
+                data: {
+                    title: 'Add a new layer below labels'
+                }
+            },
+            {
+                path: 'display-buildings-in-three-d',
+                component: DisplayBuildingsInThreeDComponent,
+                data: {
+                    title: 'Display buildings in 3D'
+                }
+            }
+        ],
     },
-    {
-        path: 'display-buildings-in-three-d',
-        component: DisplayBuildingsInThreeDComponent,
-    }
 ];
