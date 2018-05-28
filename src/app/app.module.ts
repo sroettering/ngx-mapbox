@@ -8,12 +8,14 @@ import { AddANewLayerBelowLabelsComponent } from './add-a-new-layer-below-labels
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
 import { DisplayBuildingsInThreeDComponent } from './display-buildings-in-three-d/display-buildings-in-three-d.component';
+import { TableOfContentsComponent } from './table-of-contents/table-of-contents.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         AddANewLayerBelowLabelsComponent,
-        DisplayBuildingsInThreeDComponent
+        DisplayBuildingsInThreeDComponent,
+        TableOfContentsComponent
     ],
     imports: [
         BrowserModule,
