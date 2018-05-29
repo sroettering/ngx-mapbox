@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
 import { AddANewLayerBelowLabelsComponent } from './layers/add-a-new-layer-below-labels/add-a-new-layer-below-labels.component';
 import { DisplayBuildingsInThreeDComponent } from './layers/display-buildings-in-three-d/display-buildings-in-three-d.component';
+import { ExtrudePolygonsForThreeDIndoorMappingComponent } from './layers/extrude-polygons-for-three-d-indoor-mapping/extrude-polygons-for-three-d-indoor-mapping.component';
+import { PageComponent } from './page/page.component';
 import { AddAGeneratedIconToTheMapComponent } from './styles/add-a-generated-icon-to-the-map/add-a-generated-icon-to-the-map.component';
 import { AddAnIconToTheMapComponent } from './styles/add-an-icon-to-the-map/add-an-icon-to-the-map.component';
 import { ChangeAMapsStyleComponent } from './styles/change-a-maps-style/change-a-maps-style.component';
@@ -27,7 +29,9 @@ import { TableOfContentsComponent } from './table-of-contents/table-of-contents.
         DisplayAMapWithACustomStyleComponent,
         DisplayASatelliteMapComponent,
         ChangeAMapsStyleComponent,
-        DisplayAMapComponent
+        DisplayAMapComponent,
+        ExtrudePolygonsForThreeDIndoorMappingComponent,
+        PageComponent
     ],
     imports: [
         BrowserModule,

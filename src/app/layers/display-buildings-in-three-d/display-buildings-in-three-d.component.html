@@ -1,15 +1,17 @@
-<mbox-map [style]="style"
-          [center]="center"
-          [zoom]="zoom"
-          [pitch]="pitch"
-          [bearing]="bearing">
-  <mbox-layer [id]="'3d-buildings'"
-              [type]="'fill-extrusion'"
-              [source]="'composite'"
-              [sourceLayer]="'building'"
-              [minzoom]="15"
-              [filter]="filter"
-              [paint]="paint"
-              [before]="before">
-  </mbox-layer>
-</mbox-map>
+<app-page>
+  <mbox-map [style]="style"
+            [center]="center"
+            [zoom]="zoom"
+            [pitch]="pitch"
+            [bearing]="bearing">
+    <mbox-layer [id]="'3d-buildings'"
+                [type]="'fill-extrusion'"
+                [source]="'composite'"
+                [sourceLayer]="'building'"
+                [minzoom]="15"
+                [filter]="filter"
+                [paint]="paint"
+                [before]="before">
+    </mbox-layer>
+  </mbox-map>
+</app-page>

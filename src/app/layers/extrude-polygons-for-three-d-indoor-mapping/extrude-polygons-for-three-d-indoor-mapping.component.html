@@ -1,0 +1,13 @@
+<app-page>
+  <mbox-map [style]="style"
+            [center]="center"
+            [zoom]="zoom"
+            [pitch]="pitch"
+            [bearing]="bearing">
+    <mbox-layer [id]="'room-extrusion'"
+                [type]="'fill-extrusion'"
+                [source]="source"
+                [paint]="paint">
+    </mbox-layer>
+  </mbox-map>
+</app-page>

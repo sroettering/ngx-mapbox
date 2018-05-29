@@ -1,5 +1,6 @@
-<mbox-map [center]="center"
-          [zoom]="zoom">
+<app-page>
+  <mbox-map [center]="center"
+            [zoom]="zoom">
     <mbox-layer [id]="'urban-areas-fill'"
                 [type]="'fill'"
                 [source]="source"
@@ -7,4 +8,5 @@
                 [paint]="paint"
                 [before]="before">
     </mbox-layer>
-</mbox-map>
+  </mbox-map>
+</app-page>
