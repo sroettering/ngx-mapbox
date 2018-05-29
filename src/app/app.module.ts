@@ -6,7 +6,6 @@ import { NgxMapboxModule } from '../../projects/ngx-mapbox/src/lib/ngx-mapbox.mo
 
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
-import { ExampleBaseComponent } from './example-base/example-base.component';
 import { AddANewLayerBelowLabelsComponent } from './layers/add-a-new-layer-below-labels/add-a-new-layer-below-labels.component';
 import { DisplayBuildingsInThreeDComponent } from './layers/display-buildings-in-three-d/display-buildings-in-three-d.component';
 import { ExtrudePolygonsForThreeDIndoorMappingComponent } from './layers/extrude-polygons-for-three-d-indoor-mapping/extrude-polygons-for-three-d-indoor-mapping.component';
@@ -18,6 +17,7 @@ import { DisplayAMapWithACustomStyleComponent } from './styles/display-a-map-wit
 import { DisplayAMapComponent } from './styles/display-a-map/display-a-map.component';
 import { DisplayASatelliteMapComponent } from './styles/display-a-satellite-map/display-a-satellite-map.component';
 import { TableOfContentsComponent } from './table-of-contents/table-of-contents.component';
+import { ApiComponent } from './api/api.component';
 
 @NgModule({
     declarations: [
@@ -33,6 +33,7 @@ import { TableOfContentsComponent } from './table-of-contents/table-of-contents.
         DisplayAMapComponent,
         ExtrudePolygonsForThreeDIndoorMappingComponent,
         PageComponent,
+        ApiComponent,
     ],
     imports: [
         BrowserModule,

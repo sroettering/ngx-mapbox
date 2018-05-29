@@ -1,3 +1,7 @@
 dt {
     font-weight: bold;
 }
+
+dd > a {
+    display: block;
+}
