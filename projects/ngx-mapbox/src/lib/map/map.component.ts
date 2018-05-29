@@ -1,11 +1,22 @@
-import { AfterViewInit, Component, ContentChildren, Inject, Input, OnDestroy, OnInit, QueryList } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ContentChildren,
+    Inject,
+    Input,
+    OnChanges,
+    OnDestroy,
+    OnInit,
+    QueryList,
+    SimpleChanges
+} from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { LngLatBoundsLike, LngLatLike, Map as MapboxMap } from 'mapbox-gl';
-import { MAPBOX_ACCESS_TOKEN } from '../access-token';
-import { LayerComponent } from '../layer/layer.component';
 import { BehaviorSubject, fromEvent, Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
+import { MAPBOX_ACCESS_TOKEN } from '../access-token';
 import { ImageComponent } from '../image/image.component';
+import { LayerComponent } from '../layer/layer.component';
 import Layer = mapboxgl.Layer;
 
 @Component({
@@ -13,7 +24,7 @@ import Layer = mapboxgl.Layer;
     templateUrl: './map.component.html',
     styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnDestroy, OnInit, AfterViewInit {
+export class MapComponent implements OnDestroy, OnInit, OnChanges, AfterViewInit {
 
     @Input()
     minZoom: number = 0;
@@ -144,6 +155,13 @@ export class MapComponent implements OnDestroy, OnInit, AfterViewInit {
         this._map.remove();
     }
 
+    ngOnChanges(changes: SimpleChanges) {
+        // TODO: do we have to handle more changes?
+        if (changes['style'] && !changes['style'].firstChange) {
+            this._map.setStyle(this.style);
+        }
+    }
+
     get allLayers(): Observable<Layer[]> {
         // TODO: introduce a decorator for this stuff
         return this._loaded$
@@ -208,6 +226,8 @@ export class MapComponent implements OnDestroy, OnInit, AfterViewInit {
             // transformRequest: this.transformRequest, // TODO: does not exist in 0.44.x
             // collectResourceTiming: this.collectResourceTiming, // TODO: does not exist in 0.44.x
         });
+        // fix for not loading correctly in IE11
+        this._map.setStyle(this.style);
     }
 
 }

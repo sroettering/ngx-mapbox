@@ -1,0 +1,19 @@
+:host {
+    display: block;
+    width: 500px;
+    height: 500px;
+    position: relative;
+}
+
+#menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 10px;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

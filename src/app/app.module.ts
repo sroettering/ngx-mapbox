@@ -6,11 +6,15 @@ import { NgxMapboxModule } from '../../projects/ngx-mapbox/src/lib/ngx-mapbox.mo
 
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
-import { TableOfContentsComponent } from './table-of-contents/table-of-contents.component';
-import { AddAGeneratedIconToTheMapComponent } from './styles/add-a-generated-icon-to-the-map/add-a-generated-icon-to-the-map.component';
 import { AddANewLayerBelowLabelsComponent } from './layers/add-a-new-layer-below-labels/add-a-new-layer-below-labels.component';
 import { DisplayBuildingsInThreeDComponent } from './layers/display-buildings-in-three-d/display-buildings-in-three-d.component';
+import { AddAGeneratedIconToTheMapComponent } from './styles/add-a-generated-icon-to-the-map/add-a-generated-icon-to-the-map.component';
 import { AddAnIconToTheMapComponent } from './styles/add-an-icon-to-the-map/add-an-icon-to-the-map.component';
+import { ChangeAMapsStyleComponent } from './styles/change-a-maps-style/change-a-maps-style.component';
+import { DisplayAMapWithACustomStyleComponent } from './styles/display-a-map-with-a-custom-style/display-a-map-with-a-custom-style.component';
+import { DisplayAMapComponent } from './styles/display-a-map/display-a-map.component';
+import { DisplayASatelliteMapComponent } from './styles/display-a-satellite-map/display-a-satellite-map.component';
+import { TableOfContentsComponent } from './table-of-contents/table-of-contents.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +23,11 @@ import { AddAnIconToTheMapComponent } from './styles/add-an-icon-to-the-map/add-
         DisplayBuildingsInThreeDComponent,
         TableOfContentsComponent,
         AddAGeneratedIconToTheMapComponent,
-        AddAnIconToTheMapComponent
+        AddAnIconToTheMapComponent,
+        DisplayAMapWithACustomStyleComponent,
+        DisplayASatelliteMapComponent,
+        ChangeAMapsStyleComponent,
+        DisplayAMapComponent
     ],
     imports: [
         BrowserModule,

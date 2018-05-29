@@ -1,0 +1,30 @@
+<mbox-map [style]="style"
+          [center]="center"
+          [zoom]="13">
+</mbox-map>
+<div id="menu">
+  <label for='basic'>
+    <input id='basic' type='radio' name='rtoggle' value='basic' checked='checked' (click)="changeStyle($event.target.id)">
+    basic
+  </label>
+  <label for='streets'>
+    <input id='streets' type='radio' name='rtoggle' value='streets' (click)="changeStyle($event.target.id)">
+    streets
+  </label>
+  <label for='bright'>
+    <input id='bright' type='radio' name='rtoggle' value='bright' (click)="changeStyle($event.target.id)">
+    bright
+  </label>
+  <label for='light'>
+    <input id='light' type='radio' name='rtoggle' value='light' (click)="changeStyle($event.target.id)">
+    light
+  </label>
+  <label for='dark'>
+    <input id='dark' type='radio' name='rtoggle' value='dark' (click)="changeStyle($event.target.id)">
+    dark
+  </label>
+  <label for='satellite'>
+    <input id='satellite' type='radio' name='rtoggle' value='satellite' (click)="changeStyle($event.target.id)">
+    satellite
+  </label>
+</div>
