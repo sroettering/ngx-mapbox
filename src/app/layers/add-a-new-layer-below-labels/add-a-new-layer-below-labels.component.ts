@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MapComponent } from '../../../../projects/ngx-mapbox/src/lib/map/map.component';
 
 @Component({
@@ -7,6 +8,8 @@ import { MapComponent } from '../../../../projects/ngx-mapbox/src/lib/map/map.co
     styleUrls: ['./add-a-new-layer-below-labels.component.css']
 })
 export class AddANewLayerBelowLabelsComponent implements AfterViewInit {
+
+    title = '';
 
     center = [-88.13734351262877, 35.137451890638886];
 
@@ -29,7 +32,8 @@ export class AddANewLayerBelowLabelsComponent implements AfterViewInit {
     @ViewChild(MapComponent)
     map: MapComponent;
 
-    constructor() {
+    constructor(route: ActivatedRoute) {
+        this.title = route.snapshot.data['title'];
     }
 
     ngAfterViewInit() {

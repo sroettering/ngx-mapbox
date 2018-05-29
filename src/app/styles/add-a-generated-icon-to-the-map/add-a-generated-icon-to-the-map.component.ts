@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MapComponent } from '../../../../projects/ngx-mapbox/src/lib/map/map.component';
 
 @Component({
@@ -7,6 +8,8 @@ import { MapComponent } from '../../../../projects/ngx-mapbox/src/lib/map/map.co
     styleUrls: ['./add-a-generated-icon-to-the-map.component.css']
 })
 export class AddAGeneratedIconToTheMapComponent {
+
+    title = '';
 
     style = 'mapbox://styles/mapbox/streets-v9';
 
@@ -32,7 +35,8 @@ export class AddAGeneratedIconToTheMapComponent {
     @ViewChild(MapComponent)
     map: MapComponent;
 
-    constructor() {
+    constructor(route: ActivatedRoute) {
+        this.title = route.snapshot.data['title'];
         const width = 64; // The image will be 64 pixels square
         const bytesPerPixel = 4; // Each pixel is represented by 4 bytes: red, green, blue, and alpha.
         const data = new Uint8Array(width * width * bytesPerPixel);

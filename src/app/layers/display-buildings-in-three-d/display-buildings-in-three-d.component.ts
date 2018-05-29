@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MapComponent } from '../../../../projects/ngx-mapbox/src/lib/map/map.component';
 
 @Component({
@@ -7,6 +8,8 @@ import { MapComponent } from '../../../../projects/ngx-mapbox/src/lib/map/map.co
     styleUrls: ['./display-buildings-in-three-d.component.css']
 })
 export class DisplayBuildingsInThreeDComponent implements AfterViewInit {
+
+    title = '';
 
     style = 'mapbox://styles/mapbox/light-v9';
     center = [-74.0066, 40.7135];
@@ -34,7 +37,8 @@ export class DisplayBuildingsInThreeDComponent implements AfterViewInit {
     @ViewChild(MapComponent)
     map: MapComponent;
 
-    constructor() {
+    constructor(route: ActivatedRoute) {
+        this.title = route.snapshot.data['title'];
     }
 
     ngAfterViewInit() {

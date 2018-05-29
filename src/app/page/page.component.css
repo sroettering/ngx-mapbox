@@ -1,3 +1,7 @@
 .map-wrapper {
     height: 500px;
 }
+
+.row:last-of-type {
+    margin-top: 2rem;
+}

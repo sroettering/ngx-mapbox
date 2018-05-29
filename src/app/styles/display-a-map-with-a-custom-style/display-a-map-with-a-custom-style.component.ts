@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-display-a-map-with-a-custom-style',
@@ -7,9 +8,12 @@ import { Component } from '@angular/core';
 })
 export class DisplayAMapWithACustomStyleComponent {
 
+    title = '';
+
     style = 'mapbox://styles/mapbox/dark-v9';
     center = [-77.38, 39];
 
-    constructor() {
+    constructor(route: ActivatedRoute) {
+        this.title = route.snapshot.data['title'];
     }
 }

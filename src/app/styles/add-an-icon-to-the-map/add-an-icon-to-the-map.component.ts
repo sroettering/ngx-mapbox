@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-add-an-icon-to-the-map',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./add-an-icon-to-the-map.component.css']
 })
 export class AddAnIconToTheMapComponent {
+
+    title = '';
 
     style = 'mapbox://styles/mapbox/streets-v9';
 
@@ -29,7 +32,8 @@ export class AddAnIconToTheMapComponent {
 
     imageSrc = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png';
 
-    constructor() {
+    constructor(route: ActivatedRoute) {
+        this.title = route.snapshot.data['title'];
     }
 
 }

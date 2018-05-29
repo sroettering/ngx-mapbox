@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-extrude-polygons-for-three-d-indoor-mapping',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
     styleUrls: ['./extrude-polygons-for-three-d-indoor-mapping.component.css']
 })
 export class ExtrudePolygonsForThreeDIndoorMappingComponent {
+
+    title = '';
 
     style = 'mapbox://styles/mapbox/streets-v9';
     center = [-87.61694, 41.86625];
@@ -24,7 +27,8 @@ export class ExtrudePolygonsForThreeDIndoorMappingComponent {
         'fill-extrusion-opacity': 0.5
     };
 
-    constructor() {
+    constructor(route: ActivatedRoute) {
+        this.title = route.snapshot.data['title'];
     }
 
 }
