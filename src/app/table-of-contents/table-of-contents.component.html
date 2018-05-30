@@ -3,19 +3,15 @@
         <dl>
             <dt>Styles</dt>
             <dd>
-                <ul>
-                    <li *ngFor="let route of styleRoutes">
-                        <a [routerLink]="'styles/' + route.path">{{ route.data.title }}</a>
-                    </li>
-                </ul>
+                <a *ngFor="let route of styleRoutes" [routerLink]="'styles/' + route.path">
+                    {{ route.data.title }}
+                </a>
             </dd>
             <dt>Layers</dt>
             <dd>
-                <ul>
-                    <li *ngFor="let route of layerRoutes">
-                        <a [routerLink]="'layers/' + route.path">{{ route.data.title }}</a>
-                    </li>
-                </ul>
+                <a *ngFor="let route of layerRoutes" [routerLink]="'layers/' + route.path">
+                    {{ route.data.title }}
+                </a>
             </dd>
         </dl>
     </div>

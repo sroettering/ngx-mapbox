@@ -1,8 +1,13 @@
-<nav class="navigation">
-  <div class="container">ngx-mapbox</div>
-</nav>
+<header class="header">
+    <div class="container">ngx-mapbox</div>
+</header>
 <main>
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
+    <aside>
+        <nav>
+            <app-table-of-contents></app-table-of-contents>
+        </nav>
+    </aside>
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
 </main>
