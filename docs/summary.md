@@ -3,7 +3,7 @@
 * [ngx-mapbox](README.md)
 * [Getting started](installation.md)
 
-## API
+## Components
 
-* [MapComponent](api/mapcomponent.md)
+* [Map](api/mapcomponent.md)
 
