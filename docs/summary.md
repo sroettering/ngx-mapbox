@@ -1,4 +1,4 @@
-# SUMMARY
+# Table of contents
 
-* [ngx-mapbox](docs/)
+* [Introduction](README.md)
 
