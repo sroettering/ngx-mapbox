@@ -193,6 +193,7 @@ export class MapComponent implements OnDestroy, OnInit, OnChanges, AfterViewInit
     }
 
     private createMapboxMap() {
+        // TODO: typing is not complete for all options
         this._map = new MapboxMap({
             container: 'mbox-map',
             minZoom: this.minZoom,
@@ -201,10 +202,10 @@ export class MapComponent implements OnDestroy, OnInit, OnChanges, AfterViewInit
             hash: this.hash,
             interactive: this.interactive,
             bearingSnap: this.bearingSnap,
-            // pitchWithRotate: this.pitchWithRotate, // TODO: does not exist in 0.44.x
+            // pitchWithRotate: this.pitchWithRotate,
             attributionControl: this.attributionControl,
             logoPosition: this.logoPosition,
-            failIfMayorPerformanceCaveat: this.failIfMajorPerformanceCaveat, // TODO: typo in option key
+            failIfMajorPerformanceCaveat: this.failIfMajorPerformanceCaveat,
             preserveDrawingBuffer: this.preserveDrawingBuffer,
             refreshExpiredTiles: this.refreshExpiredTiles,
             maxBounds: this.maxBounds,
@@ -222,9 +223,9 @@ export class MapComponent implements OnDestroy, OnInit, OnChanges, AfterViewInit
             pitch: this.pitch,
             renderWorldCopies: this.renderWorldCopies,
             maxTileCacheSize: this.maxTileCacheSize,
-            // localIdeographFontFamily: this.localIdeographFontFamily, // TODO: does not exist in 0.44.x
-            // transformRequest: this.transformRequest, // TODO: does not exist in 0.44.x
-            // collectResourceTiming: this.collectResourceTiming, // TODO: does not exist in 0.44.x
+            // localIdeographFontFamily: this.localIdeographFontFamily,
+            // transformRequest: this.transformRequest,
+            // collectResourceTiming: this.collectResourceTiming,
         });
         // fix for not loading correctly in IE11
         this._map.setStyle(this.style);

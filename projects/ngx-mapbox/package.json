@@ -7,6 +7,6 @@
         "mapbox-gl": "^0.45.0"
     },
     "devDependencies": {
-        "@types/mapbox-gl": "^0.44.4"
+        "@types/mapbox-gl": "^0.45.0"
     }
 }
