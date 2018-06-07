@@ -1,5 +1,5 @@
 # Table of contents
 
-* [Introduction](README.md)
-* [Getting Started](installation.md)
+* [ngx-mapbox](README.md)
+* [Getting started](installation.md)
 
