@@ -24,6 +24,12 @@ You also need to install mapbox-gl because it does not ship with ngx-mapbox
 npm i mapbox-gl --S
 ```
 
+or
+
+```text
+yarn add mapbox-gl
+```
+
 ## Usage
 
 First, you have to include the mapbox stylesheet somewhere in the head your index.html file.
