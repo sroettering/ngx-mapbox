@@ -1,21 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Layer } from 'mapbox-gl';
-import BackgroundLayout = mapboxgl.BackgroundLayout;
-import FillLayout = mapboxgl.FillLayout;
-import FillExtrusionLayout = mapboxgl.FillExtrusionLayout;
-import SymbolLayout = mapboxgl.SymbolLayout;
-import LineLayout = mapboxgl.LineLayout;
-import RasterLayout = mapboxgl.RasterLayout;
-import CircleLayout = mapboxgl.CircleLayout;
-import HeatmapLayout = mapboxgl.HeatmapLayout;
-import HeatmapPaint = mapboxgl.HeatmapPaint;
-import CirclePaint = mapboxgl.CirclePaint;
-import RasterPaint = mapboxgl.RasterPaint;
-import SymbolPaint = mapboxgl.SymbolPaint;
-import LinePaint = mapboxgl.LinePaint;
-import FillExtrusionPaint = mapboxgl.FillExtrusionPaint;
-import FillPaint = mapboxgl.FillPaint;
-import BackgroundPaint = mapboxgl.BackgroundPaint;
+import { Component, Input } from '@angular/core';
+import {
+    BackgroundLayout,
+    BackgroundPaint,
+    CircleLayout,
+    CirclePaint,
+    FillExtrusionLayout,
+    FillExtrusionPaint,
+    FillLayout,
+    FillPaint,
+    HeatmapLayout,
+    HeatmapPaint,
+    Layer,
+    LineLayout,
+    LinePaint,
+    RasterLayout,
+    RasterPaint,
+    SymbolLayout,
+    SymbolPaint
+} from 'mapbox-gl';
 
 @Component({
     selector: 'mbox-layer',
