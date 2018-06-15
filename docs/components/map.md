@@ -10,9 +10,9 @@
 
 ### Inputs
 
-|  |  |
+| Name | Type |
 | --- | --- |
-|  |  |
+| style | string |
 {% endtab %}
 
 {% tab title="Example" %}

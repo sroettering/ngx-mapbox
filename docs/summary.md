@@ -1,9 +1,9 @@
 # Table of contents
 
 * [ngx-mapbox](README.md)
-* [Getting started](installation.md)
+* [Getting started](getting-started.md)
 
 ## Components
 
-* [Map](api/mapcomponent.md)
+* [Map](components/map.md)
 
