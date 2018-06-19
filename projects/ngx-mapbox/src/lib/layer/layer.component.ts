@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import {
     BackgroundLayout,
     BackgroundPaint,
@@ -13,17 +13,22 @@ import {
     Layer,
     LineLayout,
     LinePaint,
+    Map as MapboxMap,
     RasterLayout,
     RasterPaint,
     SymbolLayout,
     SymbolPaint
 } from 'mapbox-gl';
+import { MapElement } from '../map-element';
 
 @Component({
     selector: 'mbox-layer',
-    templateUrl: './layer.component.html'
+    templateUrl: './layer.component.html',
+    providers: [
+        { provide: MapElement, useExisting: LayerComponent }
+    ]
 })
-export class LayerComponent {
+export class LayerComponent implements MapElement, OnChanges {
 
     @Input()
     id: string;
@@ -72,11 +77,34 @@ export class LayerComponent {
     @Input()
     before: string;
 
+    private _layer: Layer;
+
+    private _map: MapboxMap;
+
     constructor() {
     }
 
-    getLayer(): Layer {
+    ngOnChanges(changes: SimpleChanges) {
+        if (this._map && this.id && changes['paint']) {
+            // console.log(changes['paint'].currentValue);
+        }
+    }
+
+    setMap(map: MapboxMap) {
+        this._map = map;
+        this._map.addLayer(this.layer, this.before);
+    }
+
+    private get layer(): Layer {
+        if (!this._layer) {
+            this._layer = this.buildLayer();
+        }
+        return this._layer;
+    }
+
+    private buildLayer(): Layer {
         return Object.assign(
+            this._layer || {},
             this.id && { id: this.id },
             this.type && { type: this.type },
             this.metadata && { metadata: this.metadata },
@@ -88,10 +116,6 @@ export class LayerComponent {
             this.layout && { layout: this.layout },
             this.paint && { paint: this.paint },
         );
-    }
-
-    getBefore(): string {
-        return this.before;
     }
 
 }

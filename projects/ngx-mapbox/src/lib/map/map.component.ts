@@ -6,6 +6,7 @@ import { first, map } from 'rxjs/operators';
 import { MAPBOX_ACCESS_TOKEN } from '../access-token';
 import { ImageComponent } from '../image/image.component';
 import { LayerComponent } from '../layer/layer.component';
+import { MapElement } from '../map-element';
 import { uuid } from '../uuid';
 
 @Component({
@@ -108,8 +109,8 @@ export class MapComponent implements OnDestroy, OnChanges, AfterViewInit {
     @Input()
     collectResourceTiming: boolean = false;
 
-    @ContentChildren(LayerComponent)
-    layers: QueryList<LayerComponent>;
+    @ContentChildren(LayerComponent, { read: MapElement })
+    layers: QueryList<MapElement>;
 
     @ContentChildren(ImageComponent)
     images: QueryList<ImageComponent>;
@@ -122,7 +123,7 @@ export class MapComponent implements OnDestroy, OnChanges, AfterViewInit {
 
     constructor(@Inject(MAPBOX_ACCESS_TOKEN) private accessToken: string) {
         if (!accessToken) {
-            throw new Error('No mapbox access token provided');
+            throw new Error('Please provide a mapbox access token');
         }
         Object.getOwnPropertyDescriptor(mapboxgl, 'accessToken').set(accessToken);
     }
@@ -160,9 +161,9 @@ export class MapComponent implements OnDestroy, OnChanges, AfterViewInit {
     }
 
     private addAllLayersToMap() {
-        this.layers.changes.subscribe(change => console.log(change));
-        this.layers.forEach(layerComponent =>
-            this._map.addLayer(layerComponent.getLayer(), layerComponent.getBefore()));
+        // this.layers.forEach(layerComponent =>
+        //     this._map.addLayer(layerComponent.layer, layerComponent.beforeLayer));
+        this.layers.forEach(layerComponent => layerComponent.setMap(this._map));
     }
 
     private addAllImagesToMap() {
