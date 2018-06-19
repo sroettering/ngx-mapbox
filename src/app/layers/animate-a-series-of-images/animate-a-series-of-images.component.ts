@@ -40,7 +40,7 @@ export class AnimateASeriesOfImagesComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.subscription = interval(200)
+        this.subscription = interval(300)
             .pipe(
                 map(value => value % this.frameCount)
             )
@@ -70,7 +70,7 @@ export class AnimateASeriesOfImagesComponent implements OnInit, OnDestroy {
     private createSource(imageIndex: number) {
         return {
             type: 'image',
-            url: `https://www.mapbox.com/mapbox-gl-js/assets/radar${imageIndex}.gif`,
+            url: `/assets/radar${imageIndex}.gif`,
             coordinates: [
                 [-80.425, 46.437],
                 [-71.516, 46.437],
