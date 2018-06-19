@@ -4,8 +4,6 @@ import { Layer, LngLatBoundsLike, LngLatLike, Map as MapboxMap } from 'mapbox-gl
 import { BehaviorSubject, fromEvent, Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 import { MAPBOX_ACCESS_TOKEN } from '../access-token';
-import { ImageComponent } from '../image/image.component';
-import { LayerComponent } from '../layer/layer.component';
 import { MapElement } from '../map-element';
 import { uuid } from '../uuid';
 
@@ -109,11 +107,8 @@ export class MapComponent implements OnDestroy, OnChanges, AfterViewInit {
     @Input()
     collectResourceTiming: boolean = false;
 
-    @ContentChildren(LayerComponent, { read: MapElement })
-    layers: QueryList<MapElement>;
-
-    @ContentChildren(ImageComponent)
-    images: QueryList<ImageComponent>;
+    @ContentChildren(MapElement, { read: MapElement })
+    mapElements: QueryList<MapElement>;
 
     private _loaded$ = new BehaviorSubject<boolean>(false);
 
@@ -134,13 +129,13 @@ export class MapComponent implements OnDestroy, OnChanges, AfterViewInit {
             .subscribe(() => this._loaded$.next(true));
         // TODO: introduce a decorator for this stuff
         this._loaded$.pipe(first(value => value)).subscribe(() => {
-            this.addAllLayersToMap();
-            this.addAllImagesToMap();
+            this.mapElements.forEach(element => element.onInit(this._map));
         });
     }
 
     ngOnDestroy() {
         // TODO: check if this throws errors while loading styles
+        this.mapElements.forEach(element => element.onDestroy());
         this._map.remove();
     }
 
@@ -158,28 +153,6 @@ export class MapComponent implements OnDestroy, OnChanges, AfterViewInit {
                 first(value => value),
                 map(() => this._map.getStyle().layers)
             );
-    }
-
-    private addAllLayersToMap() {
-        // this.layers.forEach(layerComponent =>
-        //     this._map.addLayer(layerComponent.layer, layerComponent.beforeLayer));
-        this.layers.forEach(layerComponent => layerComponent.setMap(this._map));
-    }
-
-    private addAllImagesToMap() {
-        this.images.forEach(imageComponent => {
-            const { id, image, options } = imageComponent;
-            if (typeof image === 'string') {
-                this._map.loadImage(image, (error, loadedImg) => {
-                    if (error) {
-                        throw error;
-                    }
-                    this._map.addImage(id, loadedImg, options);
-                });
-            } else {
-                this._map.addImage(id, <any>image, options);
-            }
-        });
     }
 
     private createMapboxMap() {

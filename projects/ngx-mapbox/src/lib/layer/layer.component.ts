@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 import {
     BackgroundLayout,
     BackgroundPaint,
@@ -85,14 +85,24 @@ export class LayerComponent implements MapElement, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (this._map && this.id && changes['paint']) {
-            // console.log(changes['paint'].currentValue);
+        if (this._map && this.id) {
+            if (changes['paint'] && !changes['paint'].firstChange) {
+                this.changePaint(changes['paint']);
+            }
+            if (changes['layout'] && !changes['layout'].firstChange) {
+                this.changeLayout(changes['layout']);
+            }
         }
     }
 
-    setMap(map: MapboxMap) {
+    onInit(map: MapboxMap) {
         this._map = map;
         this._map.addLayer(this.layer, this.before);
+    }
+
+    onDestroy() {
+        this._map = null;
+        this._layer = null;
     }
 
     private get layer(): Layer {
@@ -100,6 +110,20 @@ export class LayerComponent implements MapElement, OnChanges {
             this._layer = this.buildLayer();
         }
         return this._layer;
+    }
+
+    private changePaint(change: SimpleChange) {
+        const paintChange = change.currentValue;
+        Object.keys(paintChange).forEach(paintProp => {
+            this._map.setPaintProperty(this.id, paintProp, paintChange[paintProp]);
+        });
+    }
+
+    private changeLayout(change: SimpleChange) {
+        const layoutChange = change.currentValue;
+        Object.keys(layoutChange).forEach(layoutProp => {
+            this._map.setLayoutProperty(this.id, layoutProp, layoutChange[layoutProp]);
+        });
     }
 
     private buildLayer(): Layer {
