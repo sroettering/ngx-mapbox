@@ -1,0 +1,18 @@
+<app-page>
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
+  <div toolbar>
+    <button (click)="toggle()">{{ isPlaying ? 'Pause' : 'Play' }}</button>
+  </div>
+  <mbox-map [style]="style"
+            [center]="center"
+            [zoom]="zoom">
+    <mbox-layer [id]="'line-animation'"
+                [type]="'line'"
+                [source]="source"
+                [layout]="layout"
+                [paint]="paint">
+    </mbox-layer>
+  </mbox-map>
+</app-page>

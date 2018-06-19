@@ -8,6 +8,7 @@ import {
     FillExtrusionPaint,
     FillLayout,
     FillPaint,
+    GeoJSONSource,
     HeatmapLayout,
     HeatmapPaint,
     Layer,
@@ -92,6 +93,9 @@ export class LayerComponent implements MapElement, OnChanges {
             if (changes['layout'] && !changes['layout'].firstChange) {
                 this.changeLayout(changes['layout']);
             }
+            if (changes['source'] && !changes['source'].firstChange) {
+                this.changeSource(changes['source']);
+            }
         }
     }
 
@@ -124,6 +128,14 @@ export class LayerComponent implements MapElement, OnChanges {
         Object.keys(layoutChange).forEach(layoutProp => {
             this._map.setLayoutProperty(this.id, layoutProp, layoutChange[layoutProp]);
         });
+    }
+
+    private changeSource(change: SimpleChange) {
+        const sourceChange = change.currentValue;
+        if (sourceChange.type === 'geojson') {
+            (this._map.getSource(this.id) as GeoJSONSource).setData(sourceChange.data);
+        }
+        // TODO: VideoSource, ImageSource, CanvasSource
     }
 
     private buildLayer(): Layer {
