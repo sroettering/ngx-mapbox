@@ -1,0 +1,17 @@
+<app-page>
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
+  <mbox-map [style]="style"
+            [center]="center"
+            [minZoom]="minzoom"
+            [maxZoom]="maxzoom"
+            [zoom]="zoom">
+    <mbox-layer *ngFor="let layer of layers; let idx = index"
+                [id]="'radar' + idx"
+                [type]="'raster'"
+                [source]="layer.source"
+                [paint]="layer.paint">
+    </mbox-layer>
+  </mbox-map>
+</app-page>

@@ -1,30 +1,20 @@
-import {
-    AfterViewInit,
-    Component,
-    ContentChildren,
-    Inject,
-    Input,
-    OnChanges,
-    OnDestroy,
-    OnInit,
-    QueryList,
-    SimpleChanges
-} from '@angular/core';
+import { AfterViewInit, Component, ContentChildren, Inject, Input, OnChanges, OnDestroy, QueryList, SimpleChanges } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
-import { LngLatBoundsLike, LngLatLike, Map as MapboxMap } from 'mapbox-gl';
+import { Layer, LngLatBoundsLike, LngLatLike, Map as MapboxMap } from 'mapbox-gl';
 import { BehaviorSubject, fromEvent, Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 import { MAPBOX_ACCESS_TOKEN } from '../access-token';
 import { ImageComponent } from '../image/image.component';
 import { LayerComponent } from '../layer/layer.component';
-import Layer = mapboxgl.Layer;
+import { MapElement } from '../map-element';
+import { uuid } from '../uuid';
 
 @Component({
     selector: 'mbox-map',
     templateUrl: './map.component.html',
     styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnDestroy, OnInit, OnChanges, AfterViewInit {
+export class MapComponent implements OnDestroy, OnChanges, AfterViewInit {
 
     @Input()
     minZoom: number = 0;
@@ -119,8 +109,8 @@ export class MapComponent implements OnDestroy, OnInit, OnChanges, AfterViewInit
     @Input()
     collectResourceTiming: boolean = false;
 
-    @ContentChildren(LayerComponent)
-    layers: QueryList<LayerComponent>;
+    @ContentChildren(LayerComponent, { read: MapElement })
+    layers: QueryList<MapElement>;
 
     @ContentChildren(ImageComponent)
     images: QueryList<ImageComponent>;
@@ -129,20 +119,19 @@ export class MapComponent implements OnDestroy, OnInit, OnChanges, AfterViewInit
 
     private _map: MapboxMap;
 
+    readonly mapId: string = uuid();
+
     constructor(@Inject(MAPBOX_ACCESS_TOKEN) private accessToken: string) {
         if (!accessToken) {
-            throw new Error('No mapbox access token provided');
+            throw new Error('Please provide a mapbox access token');
         }
-        (mapboxgl as any).accessToken = accessToken;
-    }
-
-    ngOnInit() {
-        this.createMapboxMap();
-        fromEvent(this._map, 'load')
-            .subscribe(() => this._loaded$.next(true));
+        Object.getOwnPropertyDescriptor(mapboxgl, 'accessToken').set(accessToken);
     }
 
     ngAfterViewInit() {
+        this.createMapboxMap();
+        fromEvent(this._map, 'load')
+            .subscribe(() => this._loaded$.next(true));
         // TODO: introduce a decorator for this stuff
         this._loaded$.pipe(first(value => value)).subscribe(() => {
             this.addAllLayersToMap();
@@ -172,8 +161,9 @@ export class MapComponent implements OnDestroy, OnInit, OnChanges, AfterViewInit
     }
 
     private addAllLayersToMap() {
-        this.layers.forEach(layerComponent =>
-            this._map.addLayer(layerComponent.getLayer(), layerComponent.getBefore()));
+        // this.layers.forEach(layerComponent =>
+        //     this._map.addLayer(layerComponent.layer, layerComponent.beforeLayer));
+        this.layers.forEach(layerComponent => layerComponent.setMap(this._map));
     }
 
     private addAllImagesToMap() {
@@ -195,7 +185,7 @@ export class MapComponent implements OnDestroy, OnInit, OnChanges, AfterViewInit
     private createMapboxMap() {
         // TODO: typing is not complete for all options
         this._map = new MapboxMap({
-            container: 'mbox-map',
+            container: this.mapId,
             minZoom: this.minZoom,
             maxZoom: this.maxZoom,
             style: this.style,

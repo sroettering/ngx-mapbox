@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { MAPBOX_ACCESS_TOKEN } from '../../projects/ngx-mapbox/src/lib/access-token';
 import { NgxMapboxModule } from '../../projects/ngx-mapbox/src/lib/ngx-mapbox.module';
+import { ApiComponent } from './api/api.component';
 
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
 import { AddANewLayerBelowLabelsComponent } from './layers/add-a-new-layer-below-labels/add-a-new-layer-below-labels.component';
+import { AnimateASeriesOfImagesComponent } from './layers/animate-a-series-of-images/animate-a-series-of-images.component';
 import { DisplayBuildingsInThreeDComponent } from './layers/display-buildings-in-three-d/display-buildings-in-three-d.component';
 import { ExtrudePolygonsForThreeDIndoorMappingComponent } from './layers/extrude-polygons-for-three-d-indoor-mapping/extrude-polygons-for-three-d-indoor-mapping.component';
 import { PageComponent } from './page/page.component';
@@ -17,7 +19,6 @@ import { DisplayAMapWithACustomStyleComponent } from './styles/display-a-map-wit
 import { DisplayAMapComponent } from './styles/display-a-map/display-a-map.component';
 import { DisplayASatelliteMapComponent } from './styles/display-a-satellite-map/display-a-satellite-map.component';
 import { TableOfContentsComponent } from './table-of-contents/table-of-contents.component';
-import { ApiComponent } from './api/api.component';
 
 @NgModule({
     declarations: [
@@ -34,6 +35,7 @@ import { ApiComponent } from './api/api.component';
         ExtrudePolygonsForThreeDIndoorMappingComponent,
         PageComponent,
         ApiComponent,
+        AnimateASeriesOfImagesComponent,
     ],
     imports: [
         BrowserModule,
