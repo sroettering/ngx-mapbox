@@ -2,10 +2,6 @@
   <header>
     <h1>{{ title }}</h1>
   </header>
-  <mbox-map [style]="style"
-            [center]="center"
-            [zoom]="13">
-  </mbox-map>
   <div id="menu" toolbar>
     <label for='basic'>
       <input id='basic' type='radio' name='rtoggle' value='basic' checked='checked' (click)="changeStyle($event.target.id)">
@@ -32,4 +28,8 @@
       satellite
     </label>
   </div>
+  <mbox-map [style]="style"
+            [center]="center"
+            [zoom]="13">
+  </mbox-map>
 </app-page>

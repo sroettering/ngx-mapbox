@@ -8,6 +8,7 @@ import { ApiComponent } from './api/api.component';
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
 import { AddANewLayerBelowLabelsComponent } from './layers/add-a-new-layer-below-labels/add-a-new-layer-below-labels.component';
+import { AnimateALineComponent } from './layers/animate-a-line/animate-a-line.component';
 import { AnimateASeriesOfImagesComponent } from './layers/animate-a-series-of-images/animate-a-series-of-images.component';
 import { DisplayBuildingsInThreeDComponent } from './layers/display-buildings-in-three-d/display-buildings-in-three-d.component';
 import { ExtrudePolygonsForThreeDIndoorMappingComponent } from './layers/extrude-polygons-for-three-d-indoor-mapping/extrude-polygons-for-three-d-indoor-mapping.component';
@@ -36,6 +37,7 @@ import { TableOfContentsComponent } from './table-of-contents/table-of-contents.
         PageComponent,
         ApiComponent,
         AnimateASeriesOfImagesComponent,
+        AnimateALineComponent,
     ],
     imports: [
         BrowserModule,

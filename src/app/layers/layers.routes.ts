@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AddANewLayerBelowLabelsComponent } from './add-a-new-layer-below-labels/add-a-new-layer-below-labels.component';
+import { AnimateALineComponent } from './animate-a-line/animate-a-line.component';
 import { AnimateASeriesOfImagesComponent } from './animate-a-series-of-images/animate-a-series-of-images.component';
 import { DisplayBuildingsInThreeDComponent } from './display-buildings-in-three-d/display-buildings-in-three-d.component';
 import { ExtrudePolygonsForThreeDIndoorMappingComponent } from './extrude-polygons-for-three-d-indoor-mapping/extrude-polygons-for-three-d-indoor-mapping.component';
@@ -31,6 +32,13 @@ export const LAYERS_ROUTES: Routes = [
         component: AnimateASeriesOfImagesComponent,
         data: {
             title: 'Animate a series of images'
+        }
+    },
+    {
+        path: 'animate-a-line',
+        component: AnimateALineComponent,
+        data: {
+            title: 'Animate a line'
         }
     },
 ];
