@@ -20,6 +20,7 @@ import { DisplayAMapWithACustomStyleComponent } from './styles/display-a-map-wit
 import { DisplayAMapComponent } from './styles/display-a-map/display-a-map.component';
 import { DisplayASatelliteMapComponent } from './styles/display-a-satellite-map/display-a-satellite-map.component';
 import { TableOfContentsComponent } from './table-of-contents/table-of-contents.component';
+import { AdjustALayersOpacityComponent } from './layers/adjust-a-layers-opacity/adjust-a-layers-opacity.component';
 
 @NgModule({
     declarations: [
@@ -38,6 +39,7 @@ import { TableOfContentsComponent } from './table-of-contents/table-of-contents.
         ApiComponent,
         AnimateASeriesOfImagesComponent,
         AnimateALineComponent,
+        AdjustALayersOpacityComponent,
     ],
     imports: [
         BrowserModule,

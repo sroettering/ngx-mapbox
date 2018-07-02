@@ -1,0 +1,22 @@
+<app-page>
+    <header>
+        <h1>{{ title }}</h1>
+    </header>
+    <div id="opacity" toolbar>
+        <label for='slider'>
+            <span>Layer opacity: {{ opacity }}%</span>
+            <input id='slider' type='range' min="0" max="100" step="0" value="{{ opacity }}" (input)="changeOpacity($event)">
+        </label>
+    </div>
+    <mbox-map [style]="style"
+              [center]="center"
+              [minZoom]="minZoom"
+              [maxZoom]="maxZoom"
+              [zoom]="zoom">
+        <mbox-layer [id]="'chicago'"
+                    [type]="'raster'"
+                    [source]="source"
+                    [paint]="paint">
+        </mbox-layer>
+    </mbox-map>
+</app-page>

@@ -1,0 +1,13 @@
+#opacity {
+    display: inline-block;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+input {
+    cursor: ew-resize;
+}

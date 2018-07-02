@@ -168,7 +168,7 @@ export class MapComponent implements OnDestroy, OnChanges, AfterViewInit {
             // pitchWithRotate: this.pitchWithRotate,
             attributionControl: this.attributionControl,
             logoPosition: this.logoPosition,
-            failIfMajorPerformanceCaveat: this.failIfMajorPerformanceCaveat,
+            failIfMayorPerformanceCaveat: this.failIfMajorPerformanceCaveat,
             preserveDrawingBuffer: this.preserveDrawingBuffer,
             refreshExpiredTiles: this.refreshExpiredTiles,
             maxBounds: this.maxBounds,
