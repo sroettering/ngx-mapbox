@@ -1,0 +1,21 @@
+<app-page>
+    <header>
+        <h1>{{ title }}</h1>
+    </header>
+    <div toolbar>
+        <label for="layer-select">
+            Select layer
+            <select name="layer-select" id="layer-select" [(ngModel)]="selectedLayer">
+                <option value="water">Water</option>
+                <option value="building">Building</option>
+            </select>
+        </label>
+        <div id="swatches">
+            <div class="swatch" [style.background]="color" *ngFor="let color of colors" (click)="setColor(color)"></div>
+        </div>
+    </div>
+    <mbox-map [style]="style"
+              [center]="center"
+              [zoom]="zoom">
+    </mbox-map>
+</app-page>

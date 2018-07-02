@@ -1,0 +1,9 @@
+div[toolbar] {
+    display: inline-block;
+}
+
+div.swatch {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}

@@ -2,7 +2,9 @@ import { Routes } from '@angular/router';
 import { AddANewLayerBelowLabelsComponent } from './add-a-new-layer-below-labels/add-a-new-layer-below-labels.component';
 import { AdjustALayersOpacityComponent } from './adjust-a-layers-opacity/adjust-a-layers-opacity.component';
 import { AnimateALineComponent } from './animate-a-line/animate-a-line.component';
+import { AnimateAPointComponent } from './animate-a-point/animate-a-point.component';
 import { AnimateASeriesOfImagesComponent } from './animate-a-series-of-images/animate-a-series-of-images.component';
+import { ChangeALayersColorWithButtonsComponent } from './change-a-layers-color-with-buttons/change-a-layers-color-with-buttons.component';
 import { DisplayBuildingsInThreeDComponent } from './display-buildings-in-three-d/display-buildings-in-three-d.component';
 import { ExtrudePolygonsForThreeDIndoorMappingComponent } from './extrude-polygons-for-three-d-indoor-mapping/extrude-polygons-for-three-d-indoor-mapping.component';
 
@@ -47,6 +49,20 @@ export const LAYERS_ROUTES: Routes = [
         component: AdjustALayersOpacityComponent,
         data: {
             title: 'Adjust a layer\'s opacity'
+        }
+    },
+    {
+        path: 'animate-a-point',
+        component: AnimateAPointComponent,
+        data: {
+            title: 'Animate a point'
+        }
+    },
+    {
+        path: 'change-a-layers-color-with-buttons',
+        component: ChangeALayersColorWithButtonsComponent,
+        data: {
+            title: 'Change a layer\'s color with buttons'
         }
     },
 ];

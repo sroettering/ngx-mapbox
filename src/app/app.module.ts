@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { MAPBOX_ACCESS_TOKEN } from '../../projects/ngx-mapbox/src/lib/access-token';
@@ -21,6 +22,8 @@ import { DisplayAMapComponent } from './styles/display-a-map/display-a-map.compo
 import { DisplayASatelliteMapComponent } from './styles/display-a-satellite-map/display-a-satellite-map.component';
 import { TableOfContentsComponent } from './table-of-contents/table-of-contents.component';
 import { AdjustALayersOpacityComponent } from './layers/adjust-a-layers-opacity/adjust-a-layers-opacity.component';
+import { AnimateAPointComponent } from './layers/animate-a-point/animate-a-point.component';
+import { ChangeALayersColorWithButtonsComponent } from './layers/change-a-layers-color-with-buttons/change-a-layers-color-with-buttons.component';
 
 @NgModule({
     declarations: [
@@ -40,11 +43,14 @@ import { AdjustALayersOpacityComponent } from './layers/adjust-a-layers-opacity/
         AnimateASeriesOfImagesComponent,
         AnimateALineComponent,
         AdjustALayersOpacityComponent,
+        AnimateAPointComponent,
+        ChangeALayersColorWithButtonsComponent,
     ],
     imports: [
         BrowserModule,
         NgxMapboxModule,
         RouterModule.forRoot(APP_ROUTES),
+        FormsModule,
     ],
     providers: [
         {
