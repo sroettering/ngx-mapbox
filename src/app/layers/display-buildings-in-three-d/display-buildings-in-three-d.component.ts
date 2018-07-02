@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { MapComponent } from '../../../../projects/ngx-mapbox/src/lib/map/map.component';
 
 @Component({
@@ -35,17 +36,20 @@ export class DisplayBuildingsInThreeDComponent implements AfterViewInit {
     before: string;
 
     @ViewChild(MapComponent)
-    map: MapComponent;
+    mapComponent: MapComponent;
 
     constructor(route: ActivatedRoute) {
         this.title = route.snapshot.data['title'];
     }
 
     ngAfterViewInit() {
-        const layers$ = this.map.allLayers;
-        layers$.subscribe(
-            layers => this.before = layers.filter(layer => layer.type === 'symbol' && !!layer.layout['text-field'])[0].id
-        );
+        this.mapComponent.map
+            .pipe(
+                map(mapboxMap => mapboxMap.getStyle().layers)
+            )
+            .subscribe(
+                layers => this.before = layers.filter(layer => layer.type === 'symbol' && !!layer.layout['text-field'])[0].id
+            );
     }
 
 }

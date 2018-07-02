@@ -146,12 +146,12 @@ export class MapComponent implements OnDestroy, OnChanges, AfterViewInit {
         }
     }
 
-    get allLayers(): Observable<Layer[]> {
+    get map(): Observable<MapboxMap> {
         // TODO: introduce a decorator for this stuff
         return this._loaded$
             .pipe(
                 first(value => value),
-                map(() => this._map.getStyle().layers)
+                map(() => this._map)
             );
     }
 
