@@ -2,13 +2,14 @@
   <header>
     <h1>{{ title }}</h1>
   </header>
-  <mbox-map [center]="center"
+  <mbox-map [style]="style"
+            [center]="center"
             [zoom]="zoom">
-    <mbox-layer [id]="'urban-areas-fill'"
-                [type]="'fill'"
+    <mbox-layer [id]="'population'"
+                [type]="'circle'"
                 [source]="source"
                 [paint]="paint"
-                [before]="before">
+                [sourceLayer]="'sf2010'">
     </mbox-layer>
   </mbox-map>
 </app-page>

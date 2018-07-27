@@ -1,0 +1,22 @@
+.code-wrapper {
+    background: white;
+    border: .1rem solid #d1d1d1;
+    padding: 0;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h4 {
+    align-self: flex-start;
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+code {
+    width: 100%;
+    display: inline-block;
+    white-space: pre-wrap;
+    padding: 1rem 2rem;
+}

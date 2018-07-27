@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,6 +25,13 @@ import { TableOfContentsComponent } from './table-of-contents/table-of-contents.
 import { AdjustALayersOpacityComponent } from './layers/adjust-a-layers-opacity/adjust-a-layers-opacity.component';
 import { AnimateAPointComponent } from './layers/animate-a-point/animate-a-point.component';
 import { ChangeALayersColorWithButtonsComponent } from './layers/change-a-layers-color-with-buttons/change-a-layers-color-with-buttons.component';
+import { StyleCirclesWithADataDrivenPropertyComponent } from './layers/style-circles-with-a-data-driven-property/style-circles-with-a-data-driven-property.component';
+import { StyleLinesWithADataDrivenPropertyComponent } from './layers/style-lines-with-a-data-driven-property/style-lines-with-a-data-driven-property.component';
+import { CreateAndStyleClustersComponent } from './layers/create-and-style-clusters/create-and-style-clusters.component';
+import { AddAGeojsonLineComponent } from './layers/add-a-geojson-line/add-a-geojson-line.component';
+import { AddAGeojsonPolygonComponent } from './layers/add-a-geojson-polygon/add-a-geojson-polygon.component';
+import { CodeComponent } from './code/code.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
     declarations: [
@@ -45,12 +53,20 @@ import { ChangeALayersColorWithButtonsComponent } from './layers/change-a-layers
         AdjustALayersOpacityComponent,
         AnimateAPointComponent,
         ChangeALayersColorWithButtonsComponent,
+        StyleCirclesWithADataDrivenPropertyComponent,
+        StyleLinesWithADataDrivenPropertyComponent,
+        CreateAndStyleClustersComponent,
+        AddAGeojsonLineComponent,
+        AddAGeojsonPolygonComponent,
+        CodeComponent,
+        LoaderComponent,
     ],
     imports: [
         BrowserModule,
         NgxMapboxModule,
         RouterModule.forRoot(APP_ROUTES),
         FormsModule,
+        HttpClientModule,
     ],
     providers: [
         {

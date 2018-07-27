@@ -1,6 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import GeoJSONSource = mapboxgl.GeoJSONSource;
+import { Point } from 'geojson';
 
 @Component({
     selector: 'app-animate-a-point',
@@ -20,7 +20,6 @@ export class AnimateAPointComponent implements AfterViewInit {
         'data': this.pointOnCircle(0)
     };
 
-    layout = {};
     paint = {
         'circle-radius': 10,
         'circle-color': '#007cbf'
@@ -36,14 +35,14 @@ export class AnimateAPointComponent implements AfterViewInit {
         this.animateMarker(0);
     }
 
-    private pointOnCircle(angle: number): GeoJSONSource {
+    private pointOnCircle(angle: number) {
         return {
             type: 'Point',
             'coordinates': [
                 Math.cos(angle) * this.radius,
                 Math.sin(angle) * this.radius,
             ]
-        } as GeoJSONSource;
+        };
     }
 
     private animateMarker(timestamp?: any) {
