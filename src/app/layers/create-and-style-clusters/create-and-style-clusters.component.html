@@ -1,0 +1,28 @@
+<app-page>
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
+  <mbox-map [style]="style"
+            [center]="center"
+            [zoom]="zoom">
+    <mbox-layer [id]="'clusters'"
+                [type]="'circle'"
+                [source]="source"
+                [paint]="clusteredPoint.paint"
+                [filter]="clusteredPoint.filter">
+    </mbox-layer>
+    <mbox-layer [id]="'cluster-count'"
+                [type]="'symbol'"
+                [source]="source"
+                [layout]="clusterCount.layout"
+                [filter]="clusterCount.filter">
+    </mbox-layer>
+    <mbox-layer [id]="'unclustered-point'"
+                [type]="'circle'"
+                [source]="source"
+                [paint]="unclusteredPoint.paint"
+                [filter]="unclusteredPoint.filter">
+    </mbox-layer>
+  </mbox-map>
+</app-page>
+

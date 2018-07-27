@@ -15,6 +15,8 @@
 </div>
 <div class="row">
   <div class="column">
-    <button class="button button-outline" [routerLink]="'/'">&larr; Back to Index</button>
+    <app-code [filename]="tsFilename" [code]="tsCode"></app-code>
+    <app-code [filename]="htmlFilename" [code]="htmlCode"></app-code>
+    <app-code [filename]="cssFilename" [code]="cssCode"></app-code>
   </div>
 </div>

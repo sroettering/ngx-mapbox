@@ -1,0 +1,15 @@
+<app-page>
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
+  <mbox-map [style]="style"
+            [center]="center"
+            [zoom]="zoom">
+    <mbox-layer [id]="'route'"
+                [type]="'line'"
+                [source]="source"
+                [layout]="layout"
+                [paint]="paint">
+    </mbox-layer>
+  </mbox-map>
+</app-page>
